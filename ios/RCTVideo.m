@@ -381,8 +381,10 @@ static NSString *const playbackRate = @"rate";
     }
   } else if (object == _player) {
       if([keyPath isEqualToString:playbackRate]) {
-          self.onPlaybackRateChange(@{@"playbackRate": [NSNumber numberWithFloat:_player.rate],
-                                      @"target": self.reactTag});
+// ### Not using this feature anyway, but it prevents playback on iphones 5/5s/5c
+// https://github.com/react-native-community/react-native-video/issues/418
+//          self.onPlaybackRateChange(@{@"playbackRate": [NSNumber numberWithFloat:_player.rate],
+//                                      @"target": self.reactTag});
           if(_playbackStalled && _player.rate > 0) {
               self.onPlaybackResume(@{@"playbackRate": [NSNumber numberWithFloat:_player.rate],
                                       @"target": self.reactTag});
